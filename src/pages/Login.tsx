@@ -33,8 +33,8 @@ export default function Login() {
             size="sm"
             onClick={goBack}
             className={`flex items-center gap-2 transition-colors ${theme === 'light'
-                ? 'text-black hover:text-black/80 hover:bg-black/10'
-                : 'text-white hover:text-white/80 hover:bg-white/10'
+              ? 'text-black hover:text-black/80 hover:bg-black/10'
+              : 'text-white hover:text-white/80 hover:bg-white/10'
               }`}
           >
             <AiOutlineArrowLeft className="w-4 h-4" />
@@ -45,8 +45,8 @@ export default function Login() {
         {/* Centered Form Container */}
         <div className="flex-1 flex items-center justify-center px-4 py-8">
           <Card className={`w-full max-w-md border shadow-2xl ${theme === 'light'
-              ? 'bg-white border-gray-200'
-              : 'bg-card/95 backdrop-blur-sm border-border dark:shadow-xl'
+            ? 'bg-white border-gray-200'
+            : 'bg-card/95 backdrop-blur-sm border-border dark:shadow-xl'
             }`}>
             <div className="p-8">
               {/* Header */}
@@ -103,7 +103,11 @@ export default function Login() {
                 </div>
 
                 {/* Login Button */}
-                <Button className="w-full h-12 bg-gradient-to-r from-lime-600 to-green-600 hover:from-lime-700 hover:to-green-700 text-white font-semibold transition-all duration-300">
+                <Button className="w-full h-12 bg-gradient-to-r from-lime-600 to-green-600 hover:from-lime-700 hover:to-green-700 text-white font-semibold transition-all duration-300" onClick={
+                  () => {
+                    navigate("/dashboard")
+                  }
+                }>
                   Sign In
                 </Button>
 
