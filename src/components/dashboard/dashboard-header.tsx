@@ -2,6 +2,10 @@ import { Button } from "../ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Bell, Moon, Sun, User, Settings, LogOut } from "lucide-react"
 import { useTheme } from "@/contexts/theme-context"
+import { useAppSelector, useAppDispatch } from "@/store/hooks"
+import { logout } from "@/store/slices/authSlice"
+import { useNavigate } from "react-router-dom"
+import { toast } from "sonner"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -12,6 +16,18 @@ import {
 
 export const DashboardHeader = () => {
     const { theme, toggleTheme } = useTheme()
+    const { user } = useAppSelector((state) => state.auth)
+    const dispatch = useAppDispatch()
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        dispatch(logout())
+        toast.success("Logged out successfully!")
+        navigate("/login")
+    }
+
+    const userInitials = user ? `${user.firstName[0]}${user.lastName[0]}` : "U"
+    const userName = user ? `${user.firstName} ${user.lastName}` : "User"
 
     return (
         <div className="flex items-center gap-2 md:gap-4">
@@ -37,7 +53,7 @@ export const DashboardHeader = () => {
                     <Button variant="ghost" className="rounded-full h-8 w-8 p-0">
                         <Avatar className="h-8 w-8">
                             <AvatarImage src="/avatars/user.png" />
-                            <AvatarFallback>JD</AvatarFallback>
+                            <AvatarFallback>{userInitials}</AvatarFallback>
                         </Avatar>
                     </Button>
                 </DropdownMenuTrigger>
@@ -45,11 +61,11 @@ export const DashboardHeader = () => {
                     <div className="flex items-center gap-3 p-3">
                         <Avatar className="h-10 w-10 ring-1 ring-border">
                             <AvatarImage src="/avatars/user.png" />
-                            <AvatarFallback className="bg-muted text-muted-foreground">JD</AvatarFallback>
+                            <AvatarFallback className="bg-muted text-muted-foreground">{userInitials}</AvatarFallback>
                         </Avatar>
                         <div className="flex flex-col space-y-1">
-                            <p className="font-medium leading-none text-foreground">John Doe</p>
-                            <p className="text-sm text-muted-foreground">john@example.com</p>
+                            <p className="font-medium leading-none text-foreground">{userName}</p>
+                            <p className="text-sm text-muted-foreground">{user?.email}</p>
                         </div>
                     </div>
                     <DropdownMenuSeparator className="dark:border-border/50" />
@@ -62,7 +78,10 @@ export const DashboardHeader = () => {
                         <span>Settings</span>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator className="dark:border-border/50" />
-                    <DropdownMenuItem className="text-destructive cursor-pointer focus:bg-destructive/10 dark:hover:text-destructive">
+                    <DropdownMenuItem 
+                        className="text-destructive cursor-pointer focus:bg-destructive/10 dark:hover:text-destructive"
+                        onClick={handleLogout}
+                    >
                         <LogOut className="mr-2 h-4 w-4" />
                         <span>Log out</span>
                     </DropdownMenuItem>

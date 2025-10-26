@@ -1,5 +1,7 @@
 import { Routes, Route, Outlet } from "react-router-dom"
 import { ThemeProvider } from "./contexts/theme-context"
+import { Toaster } from "sonner"
+import { ProtectedRoute } from "./components/ProtectedRoute"
 import HomePage from "./pages/HomePage"
 import QuizPage from "./pages/QuizPage"
 import RoadmapPage from "./pages/RoadmapPage"
@@ -25,13 +27,28 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        {/* Dashboard Routes */}
-        <Route path="/dashboard" element={<DashboardLayout><Outlet /></DashboardLayout>}>
+        {/* Protected Dashboard Routes */}
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <Outlet />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }>
           <Route index element={<DashboardPage />} />
           <Route path="courses" element={<CoursesPage />} />
           <Route path="tests" element={<TestsPage />} />
         </Route>
       </Routes>
+      
+      {/* Toast Notifications */}
+      <Toaster 
+        position="top-right"
+        richColors 
+        closeButton 
+        expand={false}
+        duration={4000}
+      />
     </ThemeProvider>
   )
 }
