@@ -1,17 +1,13 @@
 @import "tailwindcss";
 
-@theme inline {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-
-  /* Light mode colors */
+:root {
   --color-background: #ffffff;
   --color-foreground: #0a0a0a;
   --color-card: #ffffff;
   --color-card-foreground: #0a0a0a;
   --color-popover: #ffffff;
   --color-popover-foreground: #0a0a0a;
-  --color-primary: linear-gradient(to right, #a3e635, #22c55e);
+  --color-primary: #a3e635;
   --color-primary-foreground: #ffffff;
   --color-secondary: #f1f5f9;
   --color-secondary-foreground: #0f172a;
@@ -29,8 +25,6 @@
   --color-lime-600: #65a30d;
   --color-green-300: #86efac;
   --color-green-500: #22c55e;
-  --tw-gradient-to: var(--color-green-500);
-  --tw-gradient-from: var(--color-lime-400);
   --radius: 0.5rem;
 }
 
@@ -41,7 +35,7 @@
   --color-card-foreground: #fafafa;
   --color-popover: #0a0a0a;
   --color-popover-foreground: #fafafa;
-  --color-primary: linear-gradient(to right, #a3e635, #22c55e);
+  --color-primary: #a3e635;
   --color-primary-foreground: #ffffff;
   --color-secondary: #1e293b;
   --color-secondary-foreground: #f8fafc;
@@ -59,8 +53,6 @@
   --color-lime-600: #4d7c0f;
   --color-green-300: #86efac;
   --color-green-500: #22c55e;
-  --tw-gradient-to: var(--color-green-500);
-  --tw-gradient-from: var(--color-lime-400);
 }
 
 * {
@@ -70,51 +62,61 @@
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-sans);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
 }
 
 /* Global utility classes */
 .bg-brand-gradient {
-  background: linear-gradient(to right, var(--color-lime-400), var(--color-green-500));
+  background: linear-gradient(to right, #a3e635, #22c55e);
 }
 
 .bg-brand-gradient-logo {
-  background: linear-gradient(to right, var(--color-lime-400), var(--color-green-500));
+  background: linear-gradient(to right, #a3e635, #22c55e);
 }
 
 /* Override Tailwind's primary colors with gradients */
 .bg-primary {
-  background: linear-gradient(to right, var(--color-lime-400), var(--color-green-500)) !important;
-  color: var(--color-primary-foreground);
+  background: linear-gradient(to right, #a3e635, #22c55e) !important;
+  color: hsl(var(--primary-foreground));
 }
 
 .text-primary {
-  background: linear-gradient(to right, var(--color-lime-400), var(--color-green-500));
+  background: linear-gradient(to right, #a3e635, #22c55e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .border-primary {
-  border-color: var(--color-lime-400);
+  border-color: #a3e635;
 }
 
 .hover\:text-primary:hover {
-  background: linear-gradient(to right, var(--color-lime-400), var(--color-green-500));
+  background: linear-gradient(to right, #a3e635, #22c55e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .hover\:bg-primary:hover {
-  background: linear-gradient(to right, var(--color-lime-400), var(--color-green-500)) !important;
+  background: linear-gradient(to right, #a3e635, #22c55e) !important;
 }
 
 /* Button gradient styles */
 .btn-primary,
 button[class*="bg-primary"] {
-  background: linear-gradient(to right, var(--color-lime-400), var(--color-green-500)) !important;
-  color: var(--color-primary-foreground);
+  background: linear-gradient(to right, #a3e635, #22c55e) !important;
+  color: hsl(var(--primary-foreground));
   border: none;
 }
 
@@ -127,23 +129,23 @@ button[class*="bg-primary"]:hover {
 
 /* Outline button styles using global colors */
 .border-lime-400 {
-  border-color: var(--color-lime-400);
+  border-color: #a3e635;
 }
 
 .text-lime-600 {
-  color: var(--color-lime-600);
+  color: #65a30d;
 }
 
 .hover\:bg-lime-50:hover {
-  background-color: var(--color-lime-50);
+  background-color: #f7fee7;
 }
 
 .dark .dark\:border-lime-400 {
-  border-color: var(--color-lime-400);
+  border-color: #a3e635;
 }
 
 .dark .dark\:text-lime-400 {
-  color: var(--color-lime-400);
+  color: #a3e635;
 }
 
 .dark .dark\:hover\:bg-lime-50\/10:hover {
@@ -188,7 +190,7 @@ button[class*="bg-primary"]:hover {
 
 /* Enhanced hover effects for dropdown items */
 [data-slot="dropdown-menu-radio-item"]:hover {
-  background-color: var(--color-accent);
+  background-color: hsl(var(--accent));
   transition: background-color 150ms ease-in-out;
 }
 
