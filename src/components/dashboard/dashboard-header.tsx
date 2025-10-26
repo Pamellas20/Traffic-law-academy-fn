@@ -41,7 +41,7 @@ export const DashboardHeader = () => {
                         </Avatar>
                     </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56 dark:bg-card/95" sideOffset={5}>
+                <DropdownMenuContent align="end" className="w-56 bg-background/95 backdrop-blur-md border border-border shadow-lg" sideOffset={5}>
                     <div className="flex items-center gap-3 p-3">
                         <Avatar className="h-10 w-10 ring-1 ring-border">
                             <AvatarImage src="/avatars/user.png" />

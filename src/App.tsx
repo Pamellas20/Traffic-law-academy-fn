@@ -6,6 +6,7 @@ import RoadmapPage from "./pages/RoadmapPage"
 import CertificationPage from "./pages/CertificationPage"
 import Login from "./pages/Login"
 import SignUp from "./pages/SignUp"
+import ForgotPassword from "./pages/ForgotPassword"
 import DashboardPage from "./pages/DashboardPage"
 import TestsPage from "./pages/TestsPage"
 import { DashboardLayout } from "./components/dashboard/dashboard-layout"
@@ -22,6 +23,7 @@ function App() {
         <Route path="/certification" element={<CertificationPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* Dashboard Routes */}
         <Route path="/dashboard" element={<DashboardLayout><Outlet /></DashboardLayout>}>

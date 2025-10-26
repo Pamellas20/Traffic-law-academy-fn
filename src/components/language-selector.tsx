@@ -63,7 +63,7 @@ export function LanguageSelector({ variant = "button", className }: LanguageSele
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                     align="end"
-                    className="w-56 animate-in fade-in-0 zoom-in-95 duration-200"
+                    className="w-56 bg-background/95 backdrop-blur-md border border-border shadow-lg animate-in fade-in-0 zoom-in-95 duration-200"
                     sideOffset={8}
                     style={{ zIndex: 999999 }}
                 >
@@ -99,7 +99,7 @@ export function LanguageSelector({ variant = "button", className }: LanguageSele
             </DropdownMenuTrigger>
             <DropdownMenuContent
                 align="end"
-                className="w-56 animate-in fade-in-0 zoom-in-95 duration-200"
+                className="w-56 bg-background/95 backdrop-blur-md border border-border shadow-lg animate-in fade-in-0 zoom-in-95 duration-200"
                 sideOffset={8}
                 style={{ zIndex: 999999 }}
             >

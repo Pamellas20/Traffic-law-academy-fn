@@ -29,7 +29,7 @@ const courses: Course[] = [
         duration: "3 hours",
         lessons: 12,
         progress: 45,
-        image: "/courses/road-rules.jpg"
+        image: "/road_rules.png"
     },
     {
         id: "3",
@@ -37,8 +37,8 @@ const courses: Course[] = [
         description: "Essential techniques for defensive driving and accident prevention.",
         duration: "2.5 hours",
         lessons: 10,
-        progress: 0,
-        image: "/courses/safe-driving.jpg"
+        progress: 10,
+        image: "/safe_driving.png"
     }
 ]
 
@@ -60,7 +60,11 @@ export const CoursesPage = () => {
                             <div className="aspect-video relative bg-muted">
                                 {/* Placeholder for course image */}
                                 <div className="absolute inset-0 flex items-center justify-center bg-secondary">
-                                    <BookOpen className="h-10 w-10 text-muted-foreground" />
+                                    <img
+                                        src={course.image}
+                                        alt={course.title}
+                                        className="object-cover w-full h-full"
+                                    />
                                 </div>
                             </div>
 
@@ -85,7 +89,7 @@ export const CoursesPage = () => {
                                 {course.progress > 0 && (
                                     <div className="mb-4">
                                         <div className="h-2 w-full bg-secondary rounded-full">
-                                            <div 
+                                            <div
                                                 className="h-full bg-primary rounded-full transition-all duration-300"
                                                 style={{ width: `${course.progress}%` }}
                                             />
