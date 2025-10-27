@@ -56,7 +56,10 @@ export const authApiSlice = apiSlice.injectEndpoints({
       query: (userData) => ({
         url: '/auth/signup',
         method: 'POST',
-        body: userData,
+        body: {
+          ...userData,
+          role: 'normal',
+        },
       }),
       invalidatesTags: ['User'],
     }),

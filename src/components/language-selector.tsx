@@ -45,7 +45,6 @@ export function LanguageSelector({ variant = "button", className }: LanguageSele
 
     const handleLanguageChange = (languageCode: string) => {
         setSelectedLanguage(languageCode)
-        console.log(`Language changed to: ${languageCode}`)
     }
 
     if (variant === "icon") {
